@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title> Aib</title>
+ <style>
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ font-family: 'Quicksand', 'Segoe UI', sans-serif;
+ }
+ body {
+ background-color: #f8e1e8;
+ color: #333;
+ line-height: 1.6;
+ padding-bottom: 2rem;
+ }
+ header {
+ background: linear-gradient(135deg, #ff7eb3, #ff65a3);
+ color: white;
+ text-align: center;
+ padding: 2rem 1rem;
+ box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+ position: relative;
+ overflow: hidden;
+ }
+ header::before {
+ content: "🙈";
+ font-size: 3rem;
+ position: absolute;
+ top: 1rem;
+ left: 10%;
+ opacity: 0.2;
+ }
+ header::after {
+ content: "🙊";
+ font-size: 3rem;
+ position: absolute;
+ bottom: 1rem;
+ right: 10%;
+ opacity: 0.2;
+ }
+ h1 {
+ font-size: 2.5rem;
+ margin-bottom: 0.5rem;
+ text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+ }
+ .subtitle {
+ font-size: 1.2rem;
+ font-weight: 300;
+ }
+ .container {
+ width: 90%;
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 1rem;
+ }
+ .aib-container {
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+ gap: 1.5rem;
+ margin-top: 2rem;
+ }
+ .aib-card {
+ background-color: white;
+ border-radius: 12px;
+ padding: 1.5rem;
+ box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+ transition: transform 0.3s, box-shadow 0.3s;
+ position: relative;
+ overflow: hidden;
+ }
+ .aib-card:hover {
+ transform: translateY(-5px);
+ box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+ }
+ .aib-card::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ right: 0;
+ width: 60px;
+ height: 60px;
+ background: linear-gradient(135deg, transparent 50%, #ffcce0 50%);
+ border-radius: 0 0 0 12px;
+ z-index: 1;
+ }
+ .friend-name {
+ color: #ff65a3;
+ font-size: 1.4rem;
+ margin-bottom: 0.5rem;
+ font-weight: 700;
+ }
+ .aib-date {
+ font-size: 0.85rem;
+ color: #888;
+ margin-bottom: 1rem;
+ display: inline-block;
+ background-color: #f8f8f8;
+ padding: 0.2rem 0.6rem;
+ border-radius: 50px;
+ }
+ .aib-story {
+ line-height: 1.7;
+ margin-bottom: 0.5rem;
+ color: #444;
+ }
+ footer {
+ text-align: center;
+ margin-top: 3rem;
+ padding: 1rem;
+ color: #ff65a3;
+ font-size: 0.9rem;
+ }
+ @media (max-width: 768px) {
+ h1 {
+ font-size: 2rem;
+ }
+ .aib-container {
+ grid-template-columns: 1fr;
+ }
+ }
+ @keyframes fadeIn {
+ from { opacity: 0; transform: translateY(20px); }
+ to { opacity: 1; transform: translateY(0); }
+ }
+ .aib-card {
+ animation: fadeIn 0.5s ease-out forwards;
+ }
+ </style>
+</head>
+<body>
+ <header>
+ <h1>Aib lu ada disini</h1>
+ <p class="subtitle">Tempat Aib😜</p>
+ </header>
+ <div class="container">
+ <div id="aibContainer" class="aib-container"></div>
+ </div>
+ <footer>
+ &copy; 2025 Aib 
+ </footer>
+ <script>
+ //chanell:https://whatsapp.com/channel/0029VanrndJICVfcrjFr3x2R//
+ let aibCollection = [];
+ const aibContainer = document.getElementById('aibContainer');
+
+ function formatDate(dateString) {
+ const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+ return new Date(dateString).toLocaleDateString('id-ID', options);
+ }
+//chanell:https://whatsapp.com/channel/0029VanrndJICVfcrjFr3x2R//
+ function renderAibCollection() {
+ aibContainer.innerHTML = '';
+ aibCollection.forEach((aib, index) => {
+ const aibCard = document.createElement('div');
+ aibCard.className = 'aib-card';
+ aibCard.style.animationDelay = `${index * 0.1}s`;
+ aibCard.innerHTML = `
+ <h3 class="friend-name">${aib.name}</h3>
+ <span class="aib-date">${formatDate(aib.date)}</span>
+ <p class="aib-story">${aib.story}</p>
+ `;
+ aibContainer.appendChild(aibCard);
+ });
+ }
+//chanell:https://whatsapp.com/channel/0029VanrndJICVfcrjFr3x2R//
+ function loadSampleData() {
+ aibCollection = [
+ {
+ name: "Andi",
+ story: "Waktu SMA, dia salah sebut nama pacarnya sendiri saat kenalan sama orang tua pacarnya. Langsung ditatap sinis ajg🤣",
+ date: "2024-05-03"
+ },
+ {
+ name: "Budi",
+ story: "Pernah keceplosan manggil dosen 'Mama' di depan kelas. Seluruh mahasiswa langsung ketawa sampai dosen bingung. Sampai sekarang masih jadi bahan bully-an.",
+ date: "2023-11-15"
+ },
+ {
+ name: "Citra",
+ story: "Dia nyanyi keras-keras pake earphone di kereta, ga sadar volume suaranya. Penumpang lain pada ngerekam diam-diam, sekarang jadi konten viral. 😂",
+ date: "2024-02-20"
+ }
+ ];
+ renderAibCollection();
+ }
+
+ loadSampleData();
+ </script>
+</body>
+</html>
